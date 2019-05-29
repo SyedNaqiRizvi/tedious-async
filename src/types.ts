@@ -3,7 +3,7 @@ import { Connection as TediousConnection } from 'tedious';
 type DbRow = DbColumn[];
 
 interface DbColumn {
-  value: any[];
+  value: any;
   metadata: DbColumnMeta;
 }
 

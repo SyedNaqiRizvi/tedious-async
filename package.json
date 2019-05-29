@@ -4,9 +4,11 @@
   "description": "https://github.com/SyedNaqiRizvi/tedious-async.git",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "mocha --recursive test/***/*.spec.ts --require ts-node/register",
+    "coverage": "nyc npm run test",
     "compile": "tsc",
-    "build": "npm run compile && npm run test",
+    "prebuild": "npm run compile",
+    "build": "npm run coverage",
     "clean:app": "npm cache clean --force && rm -rf node_modules && rm -rf dist",
     "clean:install": "npm run clean:app && npm install"
   },
@@ -41,9 +43,36 @@
     "@types/mocha": "^5.2.6",
     "@types/tedious": "^3.0.0",
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2",
+    "ts-node": "^8.2.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5"
+  },
+  "nyc": {
+    "require": "ts-node/register",
+    "all": true,
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "src/**/typess.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary",
+      "html"
+    ],
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
   }
 }
