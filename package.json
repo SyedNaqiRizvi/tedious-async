@@ -1,0 +1,79 @@
+{
+  "name": "tedious-async",
+  "version": "0.0.1",
+  "description": "https://github.com/SyedNaqiRizvi/tedious-async.git",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha --recursive test/**/*.spec.ts --require ts-node/register",
+    "coverage": "nyc npm run test",
+    "compile": "tsc",
+    "prebuild": "npm run compile",
+    "build": "npm run coverage",
+    "clean:app": "npm cache clean --force && rm -rf node_modules && rm -rf dist",
+    "clean:install": "npm run clean:app && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SyedNaqiRizvi/tedious-async.git"
+  },
+  "keywords": [
+    "tedious",
+    "mssql",
+    "sql",
+    "azure",
+    "microsoft",
+    "db",
+    "database",
+    "orm",
+    "async",
+    "promise",
+    "typescript"
+  ],
+  "author": "Naqi Rizvi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SyedNaqiRizvi/tedious-async/issues"
+  },
+  "homepage": "https://github.com/SyedNaqiRizvi/tedious-async#readme",
+  "dependencies": {
+    "tedious": "^6.1.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/tedious": "^3.0.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2",
+    "ts-node": "^8.2.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.5"
+  },
+  "nyc": {
+    "require": "ts-node/register",
+    "all": true,
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "src/**/types.ts",
+      "src/index.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary",
+      "html"
+    ],
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
+  }
+}
