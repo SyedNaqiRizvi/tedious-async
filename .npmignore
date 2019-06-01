@@ -3,4 +3,10 @@ src/
 .vscode
 tsconfig.json
 tslint.json
-.travis.tml
+.travis.yml
+test/
+coverage/
+.nyc_output
+.gitignore
+.npmignore
+.github
