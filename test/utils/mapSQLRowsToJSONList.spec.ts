@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { DbRow, Dictionary } from '../../src/types';
-import * as utils from '../../src/utils';
+import * as utils from '../../src/utils/sqlToJsonUtils';
 
 interface TestCase {
   name: string;
@@ -121,12 +121,13 @@ const testCases: TestCase[] = [
     expectedOutput: [],
   },
 ];
-
-describe('mapSQLRowsToJSONList()', () => {
-  testCases.forEach(testCase => {
-    it(testCase.name, () => {
-      const output = utils.mapSQLRowsToJSONList(testCase.input);
-      expect(output).to.eql(testCase.expectedOutput);
+describe('Utils', () => {
+  describe('mapSQLRowsToJSONList()', () => {
+    testCases.forEach(testCase => {
+      it(testCase.name, () => {
+        const output = utils.mapSQLRowsToJSONList(testCase.input);
+        expect(output).to.eql(testCase.expectedOutput);
+      });
     });
   });
 });

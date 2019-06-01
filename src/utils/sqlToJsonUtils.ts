@@ -1,4 +1,5 @@
-import { DbColumn, DbRow, Dictionary } from './types';
+import { DbColumn, DbRow, Dictionary } from '../types';
+import { defaultToWhenInvalidArray } from './utils';
 
 const mapSQLRowsToJSONList = (rows: DbRow[]): Dictionary[] =>
   defaultToWhenInvalidArray([], rows).map(mapSQLRowToJSON);
@@ -13,18 +14,5 @@ const addColumnAsJSONField = (
   ...jsonRow,
   [column.metadata.colName]: column.value,
 });
-
-const isArrayAndNotNil = (value: any): boolean =>
-  value && value instanceof Array;
-
-const defaultTo = <T>(isValidFn: (value: any) => boolean) => (
-  defaultValue: any,
-  value: T,
-): T => (isValidFn(value) ? value : defaultValue);
-
-const defaultToWhenInvalidArray: <T>(
-  defaultValue: any,
-  value: T,
-) => T = defaultTo(isArrayAndNotNil);
 
 export { mapSQLRowsToJSONList, mapSQLRowToJSON, addColumnAsJSONField };

@@ -4,7 +4,7 @@
   "description": "https://github.com/SyedNaqiRizvi/tedious-async.git",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha --recursive test/***/*.spec.ts --require ts-node/register",
+    "test": "mocha --recursive test/**/*.spec.ts --require ts-node/register",
     "coverage": "nyc npm run test",
     "compile": "tsc",
     "prebuild": "npm run compile",
@@ -59,7 +59,8 @@
       "src"
     ],
     "exclude": [
-      "src/**/typess.ts"
+      "src/**/types.ts",
+      "src/index.ts"
     ],
     "extension": [
       ".ts"

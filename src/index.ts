@@ -1,6 +1,6 @@
 import { Connection as TediousConnection } from 'tedious';
-import { execSqlAsync } from './extensions.ts/execSqlAsync';
-import { onConnectAsync } from './extensions.ts/onConnectAsync';
+import execSqlAsync from './extension-functions/execSqlAsync';
+import onConnectAsync from './extension-functions/onConnectAsync';
 
 class Connection extends TediousConnection {
   public execSqlAsync = execSqlAsync(this);
