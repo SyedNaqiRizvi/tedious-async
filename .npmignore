@@ -1,2 +1,6 @@
 # Typescript files
 src/
+.vscode
+tsconfig.json
+tslint.json
+.travis.tml
