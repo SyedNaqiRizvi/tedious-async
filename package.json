@@ -3,6 +3,7 @@
   "version": "0.1.2",
   "description": "https://github.com/SyedNaqiRizvi/tedious-async.git",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "mocha --recursive test/**/*.spec.ts --require ts-node/register",
     "coverage": "nyc npm run test",
