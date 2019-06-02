@@ -22,7 +22,7 @@ describe('Extention Functions', () => {
     it('should resolve promise when on function callback does not have error', async () => {
       try {
         connectionStub.on = (event, callback) => callback();
-        const connectionStatus = await onConnectAsync(connectionStub);
+        const connectionStatus = await onConnectAsync(connectionStub)();
         expect(connectionStatus).to.eql(connectionStub);
       } catch (error) {
         expect(error).to.eql(undefined);
@@ -32,7 +32,7 @@ describe('Extention Functions', () => {
     it('should resolve promise when on function callback has error as undefined', async () => {
       try {
         connectionStub.on = (event, callback) => callback(undefined);
-        const connectionStatus = await onConnectAsync(connectionStub);
+        const connectionStatus = await onConnectAsync(connectionStub)();
         expect(connectionStatus).to.eql(connectionStub);
       } catch (error) {
         expect(error).to.eql(undefined);
@@ -42,7 +42,7 @@ describe('Extention Functions', () => {
     it('should resolve promise when on function callback has error as null', async () => {
       try {
         connectionStub.on = (event, callback) => callback(null);
-        const connectionStatus = await onConnectAsync(connectionStub);
+        const connectionStatus = await onConnectAsync(connectionStub)();
         expect(connectionStatus).to.eql(connectionStub);
       } catch (error) {
         expect(error).to.eql(null);
@@ -52,7 +52,7 @@ describe('Extention Functions', () => {
     it('should reject promise when on function callback has true for error', async () => {
       try {
         connectionStub.on = (event, callback) => callback(true);
-        const connectionStatus = await onConnectAsync(connectionStub);
+        const connectionStatus = await onConnectAsync(connectionStub)();
         expect(connectionStatus).to.eql(undefined);
       } catch (error) {
         expect(error).to.eql(true);
@@ -63,7 +63,7 @@ describe('Extention Functions', () => {
       try {
         const error = new Error('test error');
         connectionStub.on = (event, callback) => callback(error);
-        const connectionStatus = await onConnectAsync(connectionStub);
+        const connectionStatus = await onConnectAsync(connectionStub)();
         expect(connectionStatus).to.eql(undefined);
       } catch (error) {
         expect(error).to.eql(error);
