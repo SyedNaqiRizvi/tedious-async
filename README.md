@@ -4,11 +4,12 @@ An ES6 Typescript async/await wrapper around the tedious library.
 
 # Details
 
-This package includes several extension functions that can be used with async/await as well as all other original tedious functinoality. As a utility, all query extension functions return SQL data as JSON with column name as field name and the column value as field value.
+This package includes several extension functions that can be used with async/await as well as all other original tedious functinoality. As a utility, all query extension functions have an option to return SQL data as JSON with column name as field name and the column value as field value returned as the javascript equivilant type.
 
 Additional Details:
-* Last updated: May 31, 2019
-* Dependencies: tedious
+
+- Last updated: May 31, 2019
+- Dependencies: tedious
 
 # Installation
 
@@ -43,9 +44,23 @@ const dbConnection = async(config: ConnectionConfig):  => {
 Here is an example of how you can use the execSqlAsync.
 Origin synchronous implementation: https://tediousjs.github.io/tedious/api-connection.html#function_execSql
 
+### Options
+
+Options is an object where you can specify any additional transformation you want on the returned data.
+Current supported options are:
+
+- format - with possible values "json" for json response or "default" for default tedious return type
+
 ```
+// import connection from "..."
+
+const options = { format: 'json' };
 const getAllUsers = async() => {
-    const users = await execSqlAsync("select * from owners;");
-    return users;
+    try {
+        const users = await connection.execSqlAsync("select * from users;", options);
+        return users;
+    } catch (error) {
+        // handle error
+    }
 };
 ```

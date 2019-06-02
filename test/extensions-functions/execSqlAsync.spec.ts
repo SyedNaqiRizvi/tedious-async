@@ -40,14 +40,28 @@ describe('Extention Functions', () => {
       }
     });
 
-    it('should resolve promise when callback function return no error', async () => {
+    it('should resolve promise when callback function return no error with json option', async () => {
       try {
         const rowCount = 1;
         const rows = [[{ value: 'value', metadata: { colName: 'colName' } }]];
-        const expected = { colName: 'value' };
+        const expected = [{ colName: 'value' }];
+        connectionStub.execSql = a => a.callback(undefined, rowCount, rows);
+        const result = await execSqlAsync(connectionStub)('test', {
+          format: 'json',
+        });
+        expect(result).to.eql(expected);
+      } catch (error) {
+        expect(error).to.eql(undefined);
+      }
+    });
+
+    it('should resolve promise when callback function return no error without any options', async () => {
+      try {
+        const rowCount = 1;
+        const rows = [[{ value: 'value', metadata: { colName: 'colName' } }]];
         connectionStub.execSql = a => a.callback(undefined, rowCount, rows);
         const result = await execSqlAsync(connectionStub)('test');
-        expect(result).to.eql(expected);
+        expect(result).to.eql(rows);
       } catch (error) {
         expect(error).to.eql(undefined);
       }
