@@ -219,7 +219,7 @@ const testCases: TestCase[] = [
       ],
     ],
     options: {
-      format: execSqlAsyncDataFormat.json,
+      format: execSqlAsyncDataFormat.default,
     },
   },
 ];
