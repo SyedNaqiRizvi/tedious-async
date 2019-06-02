@@ -1,15 +1,15 @@
 {
   "name": "tedious-async",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "https://github.com/SyedNaqiRizvi/tedious-async.git",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha --recursive test/**/*.spec.ts --require ts-node/register",
     "coverage": "nyc npm run test",
-    "compile": "tsc",
+    "compile": "tsc --declaration",
     "prebuild": "npm run compile",
     "build": "npm run coverage",
-    "clean:app": "npm cache clean --force && rm -rf node_modules && rm -rf dist",
+    "clean:app": "npm cache clean --force && rm -rf node_modules && rm -rf lib",
     "clean:install": "npm run clean:app && npm install"
   },
   "repository": {
