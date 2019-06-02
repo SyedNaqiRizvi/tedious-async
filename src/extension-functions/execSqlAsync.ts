@@ -1,10 +1,13 @@
-import { Connection as TediousConnection, Request } from 'tedious';
+import { Request } from 'tedious';
+import Connection from '../index';
 import { DbRow, Dictionary } from '../types';
-import { getJsonMapperMethod, getSqlResult } from '../utils/execSqlUtils';
+import { mapSQLRows } from '../utils/sqlToJsonUtils';
+import { execSqlAsyncOptions } from './types';
 
-const execSqlAsync = (connection: TediousConnection) => (
+const execSqlAsync = (connection: Connection) => (
   sqlString: string,
-): Promise<Dictionary> =>
+  options?: execSqlAsyncOptions,
+): Promise<Dictionary[] | Error> =>
   new Promise((resolve, reject) => {
     const request = new Request(
       sqlString,
@@ -12,8 +15,7 @@ const execSqlAsync = (connection: TediousConnection) => (
         if (error) {
           reject(error);
         }
-        const mapSqlToJSON = getJsonMapperMethod(rowCount);
-        resolve(mapSqlToJSON(getSqlResult(rowCount, rows)));
+        resolve(mapSQLRows(rows, options));
       },
     );
     connection.execSql(request);
