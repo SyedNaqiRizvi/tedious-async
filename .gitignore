@@ -64,4 +64,4 @@ typings/
 .vscode
 
 # Transpiled Javascript
-dist/
+lib/
