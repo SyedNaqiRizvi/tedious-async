@@ -1,6 +1,6 @@
 # Tedious Async
 
-An ES6 Typescript async/await wrapper around the tedious library.
+An ES6 Typescript async/await wrapper around the tedious library (http://tediousjs.github.io/tedious/index.html).
 
 # Details
 
@@ -17,6 +17,17 @@ Additional Details:
 
 # Usage
 
+## Creating a new instance
+
+```
+import Connection from 'tedious-async';
+const config: ConnectionConfig = {
+    // Tedious configurations
+};
+
+const connection = new Connection(config);
+```
+
 ## onConnect
 
 Here is an example of how you can use the onConnect implementation asynchronously.
@@ -31,8 +42,30 @@ const config: ConnectionConfig = {
 const dbConnection = async(config: ConnectionConfig):  => {
     const connection = new Connection(config);
     try {
-        const onConnectResult = await connection.onConnect();
-        return connection;
+        const onConnectResult = await connection.onConnectAsync();
+        return onConnectResult;
+    } catch (error) {
+        throw error;
+    }
+};
+```
+
+## onError
+
+Here is an example of how you can use the onError implementation asynchronously.
+Origin implementation for reference: https://tediousjs.github.io/tedious/api-connection.html#event_error
+
+```
+import { Connection, ConnectionConfig } from 'tedious-async';
+const config: ConnectionConfig = {
+    // Tedious configurations
+};
+
+const dbConnection = async(config: ConnectionConfig):  => {
+    const connection = new Connection(config);
+    try {
+        const onErrorResult = await connection.onErrorAsync();
+        return onErrorResult;
     } catch (error) {
         throw error;
     }
@@ -56,11 +89,11 @@ Current supported options are:
 
 const options = { format: 'json' };
 const getAllUsers = async() => {
-    try {
-        const users = await connection.execSqlAsync("select * from users;", options);
-        return users;
-    } catch (error) {
-        // handle error
-    }
+try {
+const users = await connection.execSqlAsync("select * from users;", options);
+return users;
+} catch (error) {
+// handle error
+}
 };
 ```
