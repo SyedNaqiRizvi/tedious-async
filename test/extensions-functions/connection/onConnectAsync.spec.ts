@@ -1,8 +1,8 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
-import onConnectAsync from '../../src/extension-functions/onConnectAsync';
-import Connection from '../../src/index';
+import onConnectAsync from '../../../src/extension-functions/connection/onConnectAsync';
+import Connection from '../../../src/index';
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 

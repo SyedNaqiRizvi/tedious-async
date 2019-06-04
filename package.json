@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "mocha --recursive test/**/*.spec.ts --require ts-node/register",
+    "test": "mocha --recursive \"test/**/*.spec.ts\" --require ts-node/register",
     "coverage": "nyc npm run test",
     "compile": "tsc --declaration",
     "prebuild": "npm run compile",

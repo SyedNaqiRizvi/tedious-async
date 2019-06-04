@@ -65,3 +65,6 @@ typings/
 
 # Transpiled Javascript
 lib/
+
+# icloud
+*.icloud
