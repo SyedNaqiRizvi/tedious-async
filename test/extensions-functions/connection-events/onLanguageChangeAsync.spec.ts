@@ -1,13 +1,13 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
-import onInfoMessageAsync from '../../../src/extension-functions/connection/onInfoMessageAsync';
+import onLanguageChangeAsync from '../../../src/extension-functions/connection-events/onLanguageChangeAsync';
 import Connection from '../../../src/index';
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 describe('Extention Functions', () => {
-  describe('onInfoMessageAsync()', () => {
+  describe('onLanguageChangeAsync()', () => {
     let sandbox;
     let connectionStub;
     beforeEach('stubbing Connection', () => {
@@ -19,37 +19,29 @@ describe('Extention Functions', () => {
       sandbox.restore();
     });
 
-    it('should resolve promise info object', async () => {
+    it('should resolve promise string', async () => {
       try {
-        const info = {
-          number: 1,
-          state: 'info',
-          class: 4,
-          message: 'message',
-          procName: 'proc',
-          lineNumber: 23,
-        };
-        connectionStub.on = (event, callback) => callback(info);
-        const onDebugResult = await onInfoMessageAsync(connectionStub)();
-        expect(onDebugResult).to.eql(info);
+        connectionStub.on = (event, callback) => callback('test');
+        const onDebugResult = await onLanguageChangeAsync(connectionStub)();
+        expect(onDebugResult).to.eql('test');
       } catch (error) {
         expect(error).to.eql(undefined);
       }
     });
 
-    it('should resolve promise empty object', async () => {
+    it('should reject promise empty string', async () => {
       try {
-        connectionStub.on = (event, callback) => callback({});
-        const onDebugResult = await onInfoMessageAsync(connectionStub)();
+        connectionStub.on = (event, callback) => callback('');
+        const onDebugResult = await onLanguageChangeAsync(connectionStub)();
       } catch (error) {
-        expect(error).to.eql({});
+        expect(error).to.eql('');
       }
     });
 
     it('should reject promise when undefined', async () => {
       try {
         connectionStub.on = (event, callback) => callback(undefined);
-        const onDebugResult = await onInfoMessageAsync(connectionStub)();
+        const onDebugResult = await onLanguageChangeAsync(connectionStub)();
       } catch (error) {
         expect(error).to.eql(undefined);
       }
@@ -58,7 +50,7 @@ describe('Extention Functions', () => {
     it('should reject promise when null', async () => {
       try {
         connectionStub.on = (event, callback) => callback(null);
-        const onDebugResult = await onInfoMessageAsync(connectionStub)();
+        const onDebugResult = await onLanguageChangeAsync(connectionStub)();
       } catch (error) {
         expect(error).to.eql(null);
       }

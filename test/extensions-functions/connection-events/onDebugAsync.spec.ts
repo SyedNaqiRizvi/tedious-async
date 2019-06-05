@@ -1,13 +1,13 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
-import onDatabaseChangeAsync from '../../../src/extension-functions/connection/onDatabaseChangeAsync';
+import onDebugAsync from '../../../src/extension-functions/connection-events/onDebugAsync';
 import Connection from '../../../src/index';
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 describe('Extention Functions', () => {
-  describe('onDatabaseChangeAsync()', () => {
+  describe('onDebugAsync()', () => {
     let sandbox;
     let connectionStub;
     beforeEach('stubbing Connection', () => {
@@ -22,7 +22,7 @@ describe('Extention Functions', () => {
     it('should resolve promise string', async () => {
       try {
         connectionStub.on = (event, callback) => callback('test');
-        const onDebugResult = await onDatabaseChangeAsync(connectionStub)();
+        const onDebugResult = await onDebugAsync(connectionStub)();
         expect(onDebugResult).to.eql('test');
       } catch (error) {
         expect(error).to.eql(undefined);
@@ -32,7 +32,7 @@ describe('Extention Functions', () => {
     it('should reject promise empty string', async () => {
       try {
         connectionStub.on = (event, callback) => callback('');
-        const onDebugResult = await onDatabaseChangeAsync(connectionStub)();
+        const onDebugResult = await onDebugAsync(connectionStub)();
       } catch (error) {
         expect(error).to.eql('');
       }
@@ -41,7 +41,7 @@ describe('Extention Functions', () => {
     it('should reject promise when undefined', async () => {
       try {
         connectionStub.on = (event, callback) => callback(undefined);
-        const onDebugResult = await onDatabaseChangeAsync(connectionStub)();
+        const onDebugResult = await onDebugAsync(connectionStub)();
       } catch (error) {
         expect(error).to.eql(undefined);
       }
@@ -50,7 +50,7 @@ describe('Extention Functions', () => {
     it('should reject promise when null', async () => {
       try {
         connectionStub.on = (event, callback) => callback(null);
-        const onDebugResult = await onDatabaseChangeAsync(connectionStub)();
+        const onDebugResult = await onDebugAsync(connectionStub)();
       } catch (error) {
         expect(error).to.eql(null);
       }
