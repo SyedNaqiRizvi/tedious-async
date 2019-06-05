@@ -1,8 +1,8 @@
 import { Request } from 'tedious';
-import Connection from '../index';
-import { DbRow, Dictionary } from '../types';
-import { mapSQLRows } from '../utils/sqlToJsonUtils';
-import { execSqlAsyncOptions } from './types';
+import Connection from '../../index';
+import { DbRow, Dictionary } from '../../types';
+import { mapSQLRows } from '../../utils/sqlToJsonUtils';
+import { execSqlAsyncOptions } from '../types';
 
 const execSqlAsync = (connection: Connection) => (
   sqlString: string,
