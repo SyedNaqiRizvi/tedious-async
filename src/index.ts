@@ -1,13 +1,13 @@
 import { Connection as TediousConnection } from 'tedious';
-import onCharsetChangeAsync from './extension-functions/connection/onCharsetChangeAsync';
-import onConnectAsync from './extension-functions/connection/onConnectAsync';
-import onDatabaseChangeAsync from './extension-functions/connection/onDatabaseChangeAsync';
-import onDebugAsync from './extension-functions/connection/onDebugAsync';
-import onEndAsync from './extension-functions/connection/onEndAsync';
-import onErrorAsync from './extension-functions/connection/onErrorAsync';
-import onErrorMessageAsync from './extension-functions/connection/onErrorMessageAsync';
-import onInfoMessageAsync from './extension-functions/connection/onInfoMessageAsync';
-import onLanguageChangeAsync from './extension-functions/connection/onLanguageChangeAsync';
+import onCharsetChangeAsync from './extension-functions/connection-events/onCharsetChangeAsync';
+import onConnectAsync from './extension-functions/connection-events/onConnectAsync';
+import onDatabaseChangeAsync from './extension-functions/connection-events/onDatabaseChangeAsync';
+import onDebugAsync from './extension-functions/connection-events/onDebugAsync';
+import onEndAsync from './extension-functions/connection-events/onEndAsync';
+import onErrorAsync from './extension-functions/connection-events/onErrorAsync';
+import onErrorMessageAsync from './extension-functions/connection-events/onErrorMessageAsync';
+import onInfoMessageAsync from './extension-functions/connection-events/onInfoMessageAsync';
+import onLanguageChangeAsync from './extension-functions/connection-events/onLanguageChangeAsync';
 import execSqlAsync from './extension-functions/execSqlAsync';
 
 class Connection extends TediousConnection {

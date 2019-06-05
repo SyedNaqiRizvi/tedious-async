@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
-import onErrorAsync from '../../../src/extension-functions/connection/onErrorAsync';
+import onErrorAsync from '../../../src/extension-functions/connection-events/onErrorAsync';
 import Connection from '../../../src/index';
 chai.use(chaiAsPromised);
 const expect = chai.expect;
