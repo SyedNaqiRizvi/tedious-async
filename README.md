@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/SyedNaqiRizvi/tedious-async.svg?branch=master)](https://travis-ci.com/SyedNaqiRizvi/tedious-async)
+[![Build Status](https://travis-ci.com/SyedNaqiRizvi/tedious-async.svg?branch=master)](https://travis-ci.com/SyedNaqiRizvi/tedious-async) [![Maintainability](https://api.codeclimate.com/v1/badges/87a2612e4c5f8c6c0d44/maintainability)](https://codeclimate.com/github/SyedNaqiRizvi/tedious-async/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/87a2612e4c5f8c6c0d44/test_coverage)](https://codeclimate.com/github/SyedNaqiRizvi/tedious-async/test_coverage)
 
 # Tedious Async
 
