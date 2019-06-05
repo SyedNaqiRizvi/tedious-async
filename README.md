@@ -5,7 +5,7 @@ An ES6 Typescript async/await wrapper around the tedious library (http://tedious
 
 # Details
 
-This package includes several extension functions that can be used with async/await as well as all other original tedious functinoality. As a utility, all query extension functions have an option to return SQL data as JSON with column name as field name and the column value as field value returned as the javascript equivilant type.
+This package includes several extension functions that can be used with async/await as well as all original tedious functions. It also includes built-in utilities for SQL operations such as having an option to return SQL data as JSON with SQL types converted to JavaScript types..
 
 Additional Details:
 - Last updated: June 4, 2019
@@ -272,7 +272,7 @@ Origin synchronous implementation: https://tediousjs.github.io/tedious/api-conne
 
 | Name | Use | Possible Values |
 |--|--|--|
-| format | transforms the format of the returned result | [`json`, `default`] |
+| format | transforms the format of the returned result | [`json`, `default`] | 
 
 
 ```

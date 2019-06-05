@@ -68,3 +68,6 @@ lib/
 
 # icloud
 *.icloud
+
+# test playground
+test/master-tests.ts
