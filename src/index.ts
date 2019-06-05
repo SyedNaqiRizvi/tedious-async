@@ -8,7 +8,7 @@ import onErrorAsync from './extension-functions/connection-events/onErrorAsync';
 import onErrorMessageAsync from './extension-functions/connection-events/onErrorMessageAsync';
 import onInfoMessageAsync from './extension-functions/connection-events/onInfoMessageAsync';
 import onLanguageChangeAsync from './extension-functions/connection-events/onLanguageChangeAsync';
-import execSqlAsync from './extension-functions/execSqlAsync';
+import execSqlAsync from './extension-functions/connection-operations/execSqlAsync';
 
 class Connection extends TediousConnection {
   public execSqlAsync = execSqlAsync(this);

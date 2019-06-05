@@ -1,8 +1,8 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import * as sinon from 'sinon';
-import execSqlAsync from '../../src/extension-functions/execSqlAsync';
-import Connection from '../../src/index';
+import execSqlAsync from '../../../src/extension-functions/connection-operations/execSqlAsync';
+import Connection from '../../../src/index';
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 describe('Extention Functions', () => {
