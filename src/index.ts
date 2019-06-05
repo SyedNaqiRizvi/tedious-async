@@ -1,4 +1,4 @@
-import { Connection as TediousConnection } from 'tedious';
+import { Connection as TediousConnection, ConnectionConfig } from 'tedious';
 import onCharsetChangeAsync from './extension-functions/connection-events/onCharsetChangeAsync';
 import onConnectAsync from './extension-functions/connection-events/onConnectAsync';
 import onDatabaseChangeAsync from './extension-functions/connection-events/onDatabaseChangeAsync';
@@ -21,6 +21,9 @@ class Connection extends TediousConnection {
   public onDatabaseChangeAsync = onDatabaseChangeAsync(this);
   public onLanguageChangeAsync = onLanguageChangeAsync(this);
   public onCharsetChangeAsync = onCharsetChangeAsync(this);
+  constructor(config: ConnectionConfig) {
+    super(config);
+  }
 }
 
 export default Connection;
