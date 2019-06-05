@@ -12,7 +12,9 @@
     "build": "npm run coverage",
     "clean:app": "npm cache clean --force && rm -rf node_modules && rm -rf lib",
     "clean:install": "npm run clean:app && npm install",
-    "release": "standard-version"
+    "prerelease": "npm run clean:install && npm run build",
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags origin master && npm publish"
   },
   "repository": {
     "type": "git",
